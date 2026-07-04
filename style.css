@@ -1,0 +1,187 @@
+/* 全局樣式：溫暖的米色背景 */
+body {
+    background-color: #F9F3E3;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 15px;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    color: #1A68A6; 
+    font-size: 2rem;
+    border-bottom: 3px solid #1A68A6;
+    padding-bottom: 5px;
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+/* 輸入表單與篩選器容器 */
+.card-input {
+    background: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-group.row, .filter-toolbar {
+    display: flex;
+    gap: 12px;
+}
+
+input, select {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #E0E0E0;
+    border-radius: 10px;
+    font-size: 14px;
+    background-color: #FAFAFA;
+}
+
+input[type="file"] {
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: #1A68A6;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* 四宮格與卡片樣式 */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    min-height: 180px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    transition: background-color 0.3s; /* 讓變色平滑一點 */
+}
+
+.card.color-0 { border-left: 8px solid #FF83A8; } 
+.card.color-1 { border-left: 8px solid #FFD13B; } 
+.card.color-2 { border-left: 8px solid #00B1F4; } 
+.card.color-3 { border-left: 8px solid #6EBF9C; } 
+
+/* 當購買完成被勾選後，強制將卡片整個背景變成淺灰色 */
+.card.completed {
+    background-color: #EAEAEA !important; /* 精緻的淺灰色 */
+    border-left-color: #A0A0A0 !important; /* 選填：如果你想讓左邊條也一起變灰，可以加這行；不想的話就刪掉這行 */
+}
+
+.card.completed .item-title {
+    text-decoration: line-through;
+    color: #777;
+}
+
+.card.completed .item-img {
+    filter: grayscale(40%); /* 讓圖片也帶點灰色調，整體感更強 */
+}
+
+.charge-info {
+    color: #d9383a;
+    font-weight: bold;
+    background: #ffebeb;
+    padding: 4px 8px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.item-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+
+.item-meta {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.item-img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    gap: 10px;
+}
+
+/* 修正 2：購買完成的勾選文字改成一排，不需換行 */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    cursor: pointer;
+    gap: 5px;
+    white-space: nowrap; /* 核心修正：強制文字在一行內呈現，絕不換行 */
+    flex-shrink: 0;      /* 防止勾選區被右邊的刪除按鈕擠壓縮小 */
+}
+
+.btn-delete {
+    background: none;
+    border: none;
+    color: #ff5252;
+    cursor: pointer;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+/* 手機版響應式 */
+@media (max-width: 600px) {
+    .form-group.row, .filter-toolbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .filter-item {
+        width: 100% !important;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+    }
+
+    .card-input {
+        padding: 15px;
+    }
+}
